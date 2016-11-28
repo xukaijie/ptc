@@ -6,18 +6,20 @@
 
 import React, { Component } from 'react';
 import Button from 'react-native-button';
-import EditView from './editView';
+import EditView from '../common/editView';
 import {userLogin} from '../actions/userActions';
-import AppMain from './appMain'
+import AppMain from './appMain';
+import {connect} from 'react-redux';
 
-import {Actions, Scene, Router} from 'react-native-router-flux';
+
 
 import {
     AppRegistry,
     StyleSheet,
     Text,
     View,
-    Image
+    Image,
+    InteractionManager
 } from 'react-native';
 
 class Login extends Component {
@@ -39,7 +41,7 @@ class Login extends Component {
         InteractionManager.runAfterInteractions(() => {
             const {userReducer} = this.props;
             if (userReducer.isLoggedIn == true) {
-                this.props.navigator.resetTo({component,AppMain,name:"appMain"});
+                this.props.navigator.resetTo({component:AppMain,name:"appMain"});
             }
             /*if (!userReducer.isLoading && userReducer.status == false) {
                 Toast.show(userReducer.message, {position: Toast.positions.CENTER});
@@ -55,7 +57,7 @@ class Login extends Component {
                 <View   style={{height:100,marginTop:60,
                     justifyContent: 'center',
                     alignItems: 'center',}}>
-                    <Image source={require('../image/login.jpg')}/>
+                    <Image source={require('../images/login.jpg')}/>
                 </View>
                 <View style={{marginTop:50}}>
                     <EditView  name='输入用户名/注册手机号' autocap = "none" onChangeText={(text) => {
@@ -76,7 +78,7 @@ class Login extends Component {
 
     onPressCallback(){
 
-
+        var {dispatch} = this.props;
         let {name, password} = this.state;
 
         if (!name.length) {

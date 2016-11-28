@@ -12,11 +12,6 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import IconFA from 'react-native-vector-icons/FontAwesome';
 
-import {Actions, Scene, Router} from 'react-native-router-flux';
-
-
-
-
 import {
     AppRegistry,
     StyleSheet,
@@ -33,7 +28,7 @@ var width = Dimensions.get("window").width;
 var pixel = 1 / PixelRatio.get();
 
 
-class mainpage extends Component {
+class Mainpage extends Component {
 
     constructor(props) {
         super(props);
@@ -79,7 +74,6 @@ class mainpage extends Component {
                         });
                     }}
                 >
-                    /*<Home navigator={this.props.navigator}/>*/
                     <View><Text>mmmm</Text></View>
 
                 </TabBarIOS.Item>
@@ -225,4 +219,4 @@ const styles = StyleSheet.create({
 
 });
 
-module.exports = mainpage
+module.exports = Mainpage
