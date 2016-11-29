@@ -96,24 +96,27 @@ export let userLogin = (mobile, password) => {
      }*/
 };
 
-/*export let userLogout = () => {
- let url = urls.kUrlUserLogout;
- return (dispatch) => {
- dispatch({'type': types.kUserLogout});
- Util.get(url,
- (status, code, message, data, share) => {
- let app_cart_cookie_id = '';
- if (status) {
- app_cart_cookie_id = data.app_cart_cookie_id;
- Storage.setAppCartCookieId(app_cart_cookie_id);
- Storage.setUser({});
- }
- dispatch({type:types.kUserLogoutReceived, status:status, code:code, message:message, share:share, app_cart_cookie_id:app_cart_cookie_id, user:{}});
- dispatch(cartView(app_cart_cookie_id, ''));
- },
- (error) => {
- Alert.alert(error.message);
- dispatch({'type': types.kActionError});
- });
- }
- };*/
+export let userLogout = () => {
+
+    return ({'type': types.kUserLogout});
+
+    /*let url = urls.kUrlUserLogout;
+    return (dispatch) => {
+    dispatch({'type': types.kUserLogout});
+    Util.get(url,
+    (status, code, message, data, share) => {
+    let app_cart_cookie_id = '';
+    if (status) {
+    app_cart_cookie_id = data.app_cart_cookie_id;
+    Storage.setAppCartCookieId(app_cart_cookie_id);
+    Storage.setUser({});
+    }
+    dispatch({type:types.kUserLogoutReceived, status:status, code:code, message:message, share:share, app_cart_cookie_id:app_cart_cookie_id, user:{}});
+    dispatch(cartView(app_cart_cookie_id, ''));
+    },
+    (error) => {
+    Alert.alert(error.message);
+    dispatch({'type': types.kActionError});
+    });
+    }*/
+ };

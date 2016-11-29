@@ -9,6 +9,8 @@ const initialState = {
     share: {},
     isLoading: false,
     isLoggedIn: false,
+    avatar:false,
+    isLoggedout:false
 };
 
 let userReducer = (state=initialState, action) => {
@@ -16,11 +18,24 @@ let userReducer = (state=initialState, action) => {
 
     switch (action.type) {
         case types.kUserLogin:
+
+            state.user.id = true;
+            state.user.mobile = "18042008682";
             return {
                 ...state,
-                ...action,
                 isLoading: false,
                 isLoggedIn: true,
+            };
+
+        case types.kUserLogout:
+
+                state.user.id=false;
+                state.user.mobile = "";
+                state.isLoggedout = true;
+            return {
+                ...state,
+                isLoading: false,
+                isLoggedIn: false
             };
 
         default:

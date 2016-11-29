@@ -13,7 +13,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import IconFA from 'react-native-vector-icons/FontAwesome';
 
 import Home from "./home";
-import Header from "../common/header"
+import Header from "../common/header";
+import Mypage from "./myPage"
 
 import {
     AppRegistry,
@@ -96,14 +97,15 @@ class Mainpage extends Component {
                 </TabBarIOS.Item>
                 <TabBarIOS.Item
                     title={this.state.selectedTab.title}
-                    systemIcon="downloads"
-                    selected={this.state.selectedTab.name === 'download'}
+                    systemIcon="more"
+                    selected={this.state.selectedTab.name === 'about'}
                     onPress={() => {
                         this.setState({
                             selectedTab: {name:'about',title:"关于"}
                         });
                     }}>
-                    <View><Text>mmmm</Text></View>
+
+                    <Mypage {...this.props}></Mypage>
                 </TabBarIOS.Item>
 
             </TabBarIOS>

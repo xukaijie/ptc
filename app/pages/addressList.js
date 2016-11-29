@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import Header from "../common/header"
 import {
     View,
     Text,
@@ -32,6 +32,10 @@ class Address extends Component{
     render(){
         return(
             <View style={styles.container}>
+                <Header title="通讯录"
+                        leftIcon='angle-left'
+                        leftIconAction={()=>this.props.navigator.pop()}></Header>
+
                 <ListView
                     dataSource={this.state.dataSource}
                     renderRow={this.renderRow.bind(this)}
