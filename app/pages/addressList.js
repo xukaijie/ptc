@@ -7,7 +7,8 @@ import {
     StyleSheet,
     Image,
     TouchableHighlight,
-    ListView
+    ListView,
+    ActionSheetIOS
 } from 'react-native';
 
 
@@ -33,7 +34,7 @@ class Address extends Component{
             <View style={styles.container}>
                 <ListView
                     dataSource={this.state.dataSource}
-                    renderRow={this.renderRow}
+                    renderRow={this.renderRow.bind(this)}
                 />
             </View>
         );
@@ -42,6 +43,8 @@ class Address extends Component{
     // 返回一个Item
     renderRow(rowData){
         return(
+
+            <TouchableHighlight  style={{flex:1}} onPress={this.clickitem.bind(this,rowData)}>
             <View style={styles.itemStyle}>
                 <Image source={rowData.image} style={styles.imageStyle}/>
                 <View style={styles.subItemStyle}>
@@ -49,7 +52,26 @@ class Address extends Component{
                     <Text style={{marginBottom:5, fontSize:13, color:'green'}}>{rowData.tele}</Text>
                 </View>
             </View>
+            </TouchableHighlight>
         );
+    }
+
+    clickitem(){
+
+        var options=[
+            "拨打电话","发送短信","取消"
+
+        ];
+
+        ActionSheetIOS.showActionSheetWithOptions({
+            options:options,
+            cancelButtonIndex:options.length-1,
+            tintColor:"green"
+
+        },function(index){
+
+
+        })
     }
 };
 
