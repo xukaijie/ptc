@@ -76,7 +76,7 @@ class Mainpage extends Component {
                         });
                     }}
                 >
-                    <Home title={this.state.selectedTab.title}></Home>
+                    <Home title={this.state.selectedTab.title}{...this.props}></Home>
 
                 </TabBarIOS.Item>
                 <TabBarIOS.Item

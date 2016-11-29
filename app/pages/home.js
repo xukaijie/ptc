@@ -13,6 +13,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import IconFA from 'react-native-vector-icons/FontAwesome';
 
 import Header from "../common/header";
+import HomeList from "../components/homeList"
 
 import {
     AppRegistry,
@@ -62,10 +63,11 @@ class Home extends Component {
                     </TouchableHighlight>
                 </Swiper>
 
+                <View style={{marginTop:30}}>
+                <HomeList {...this.props}></HomeList>
+                </View>
 
-
-
-        </View>
+            </View>
 )
 }
 };
