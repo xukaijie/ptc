@@ -12,8 +12,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import IconFA from 'react-native-vector-icons/FontAwesome';
 
-import Home from "./home";
-import Header from "../common/header"
+import Header from "../common/header";
 
 import {
     AppRegistry,
@@ -27,92 +26,49 @@ import {
     TabBarIOS
 } from 'react-native';
 
+
 var width = Dimensions.get("window").width;
 var pixel = 1 / PixelRatio.get();
 
 
-class Mainpage extends Component {
+
+class Home extends Component {
 
     constructor(props) {
         super(props);
-
-        this.state= {selectedTab:{name:"home",title:"首页"}}
-
     }
 
-    /*    _addnavgator(component){
 
-     return (
-     <Navigator
-     initialRoute={{component:component}}
-     renderScene={(route, navigator) => {
-     alert("goto home")
-     return <route.component navigator={navigator} />
-     }}>
-
-     </Navigator>
-     );
-
-     }*/
 
     render(){
-
-        var thiz=this;
-
+        var thiz = this;
         return (
+            <View style={{flex:1}}>
+
+                <Header title={this.props.title}></Header>
+                <Swiper height={150} showsButtons={false} autoplay={true}
+                        activeDot={<View style={{backgroundColor: 'red', width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3,}} />}>
+                    <TouchableHighlight  style={{flex:1}}>
+                        <View style={styles.slide}>
+                            <Image style={styles.image} source={require("./../images/day1.png")}></Image>
+                            <Text style={styles.slideText}>Day1: Timer</Text>
+                        </View>
+                    </TouchableHighlight>
+                    <TouchableHighlight  style={{flex:1}}>
+                        <View style={styles.slide}>
+                            <Image style={styles.image} source={require("./../images/day2.png")}></Image>
+                            <Text style={styles.slideText}>Day2: Weather</Text>
+                        </View>
+                    </TouchableHighlight>
+                </Swiper>
 
 
-            <TabBarIOS
-                style={{flex:1,alignItems:"flex-end"}}
-                tintColor="white"
-                barTintColor="#5fd3f5">
-                <TabBarIOS.Item
-                    title={this.state.selectedTab.title}
-                    systemIcon="favorites"
-                    selected={this.state.selectedTab.name === 'home'}
-                    onPress={() => {
-                        this.setState({
-                            selectedTab: {name:'home',title:"首页"}
-                        });
-                    }}
-                >
-                    <Home title={this.state.selectedTab.title}></Home>
-
-                </TabBarIOS.Item>
-                <TabBarIOS.Item
-                    title={this.state.selectedTab.title}
-                    systemIcon="contacts"
-                    selected={this.state.selectedTab.name === 'history'}
-
-                    onPress={() => {
-                        this.setState({
-                            selectedTab: {name:'history',title:"历史"}
-                        });
-                    }}
-                >
-
-                    <View><Text>mmmm</Text></View>
-
-                </TabBarIOS.Item>
-                <TabBarIOS.Item
-                    title={this.state.selectedTab.title}
-                    systemIcon="downloads"
-                    selected={this.state.selectedTab.name === 'download'}
-                    onPress={() => {
-                        this.setState({
-                            selectedTab: {name:'about',title:"关于"}
-                        });
-                    }}>
-                    <View><Text>mmmm</Text></View>
-                </TabBarIOS.Item>
-
-            </TabBarIOS>
 
 
-        )
-    }
+        </View>
+)
+}
 };
-
 
 
 const styles = StyleSheet.create({
@@ -129,7 +85,7 @@ const styles = StyleSheet.create({
     },
     instructions: {
         textAlign: 'center',
-        color: '#333333',
+        color: '#dff5b2',
         marginBottom: 5,
     },
     slide: {
@@ -224,4 +180,4 @@ const styles = StyleSheet.create({
 
 });
 
-module.exports = Mainpage
+module.exports=Home
