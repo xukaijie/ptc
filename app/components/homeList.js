@@ -20,7 +20,8 @@ import {
     View,
     ListView,
     TouchableHighlight,
-    Image
+    Image,
+    InteractionManager
 } from 'react-native';
 
 var width = Dimensions.get("window").width;
@@ -51,7 +52,12 @@ export default class HomeList extends Component {
 
     press(component){
 
-        this.props.navigator.push({component:component,title:"通讯录"})
+        InteractionManager.runAfterInteractions(() => {
+
+            this.props.navigator.push({component:component,title:"通讯录"})
+
+        });
+
 
     }
 
