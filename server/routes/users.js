@@ -27,12 +27,12 @@ router.post('/login', function(req, res, next) {
             ret.data.user={}
             ret.data.user.mobile = userTable.userTable[i].mobile;
             ret.data.user.id = userTable.userTable[i].id;
-            res.json(ret)
+            res.send(ret)
 
         }else{
             ret.message="login failed"
             res.status(status.status_login_failed);
-            res.json(ret)
+            res.send(ret)
         }
     }
 

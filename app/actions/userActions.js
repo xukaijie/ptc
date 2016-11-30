@@ -88,7 +88,6 @@ export let userLogin = (name, password) => {
                Storage.setUser(user);
                }
 
-               alert("here")
                dispatch({type:types.kUserLogin, status:status, code:code, message:message, share:share, user:user});
                dispatch(cartView(app_cart_cookie_id, user.access_token));
           },

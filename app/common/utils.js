@@ -42,13 +42,20 @@ let Util = {
         };
 
         fetch(url, fetchOptions)
-            .then((response) => response.text())
+            .then((response) => {
+
+                return response.json();
+
+            })
             .then((responseText) => {
-                let result = JSON.parse(responseText);
-                alert("success")
-                successCallback(result.status, result.code, result.message, result.data, result.share);
+                console.log("11111")
+
+                console.log(responseText)
+                //let result = JSON.parse(responseText);
+               // successCallback(result.status, result.code, result.message, result.data, result.share);
             })
             .catch((err) => {
+            console.log("2222")
                 failCallback(err);
             });
     },
