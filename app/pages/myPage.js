@@ -57,6 +57,7 @@ import Login from './login'
      componentWillUpdate() {
          const {userReducer} = this.props;
 
+         alert("dfwfw");
          console.log(userReducer)
          if (userReducer.isLoggedout) {
                 this.props.navigator.resetTo({component:Login,title:"登陆"})

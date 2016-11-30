@@ -15,11 +15,12 @@
 'user strict';
 
 import * as types from './actionTypes';
-/*import {cartView} from './cartActions';
- import Util from '../common/utils';
- import * as urls from '../common/constants_url';
- import * as Storage from '../common/Storage';*/
+
+import * as Storage from '../common/storage';
 import { Alert } from 'react-native';
+
+import Util from '../common/utils';
+import * as urls from '../common/urls';
 
 /*export let userFromSync = (user) => {
  return (dispatch) => {
@@ -65,35 +66,38 @@ import { Alert } from 'react-native';
  }
  };*/
 
-export let userLogin = (mobile, password) => {
+export let userLogin = (name, password) => {
 
-    return ({'type': types.kUserLogin});
+    //return ({'type': types.kUserLogin});
 
-    /* let url = urls.kUrlUserLogin;
+     let url = urls.kUrlUserLogin;
      let data = {
-     mobile: mobile,
-     password: password
+        name: name,
+        password: password
      };
      return (dispatch) => {
-     dispatch({'type': types.kUserLogin});
-     Util.post(url, data,
-     (status, code, message, data, share) => {
-     let app_cart_cookie_id = '';
-     let user = {};
-     if (status) {
-     user = data.user;
-     app_cart_cookie_id = data.app_cart_cookie_id;
-     Storage.setAppCartCookieId(app_cart_cookie_id);
-     Storage.setUser(user);
+     //dispatch({'type': types.kUserLogin});
+          Util.post(url, data,
+          (status, code, message, data, share) => {
+               let app_cart_cookie_id = '';
+               let user = {};
+               if (status) {
+               user = data.user;
+               //app_cart_cookie_id = data.app_cart_cookie_id;
+               //Storage.setAppCartCookieId(app_cart_cookie_id);
+               Storage.setUser(user);
+               }
+
+               alert("here")
+               dispatch({type:types.kUserLogin, status:status, code:code, message:message, share:share, user:user});
+               dispatch(cartView(app_cart_cookie_id, user.access_token));
+          },
+          (error) => {
+               alert("error")
+               Alert.alert(error.message);
+               dispatch({'type': types.kActionError});
+          });
      }
-     dispatch({type:types.kUserLoginReceived, status:status, code:code, message:message, share:share, user:user, app_cart_cookie_id:app_cart_cookie_id});
-     dispatch(cartView(app_cart_cookie_id, user.access_token));
-     },
-     (error) => {
-     Alert.alert(error.message);
-     dispatch({'type': types.kActionError});
-     });
-     }*/
 };
 
 export let userLogout = () => {

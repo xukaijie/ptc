@@ -15,12 +15,12 @@ const initialState = {
 
 let userReducer = (state=initialState, action) => {
 
-
+    console.log(action)
     switch (action.type) {
         case types.kUserLogin:
 
-            state.user.id = true;
-            state.user.mobile = "18042008682";
+            state.user.id = action.user.id;
+            state.user.mobile = action.user.mobile;
             return {
                 ...state,
                 isLoading: false,
