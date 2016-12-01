@@ -78,21 +78,12 @@ export let userLogin = (name, password) => {
      return (dispatch) => {
      //dispatch({'type': types.kUserLogin});
           Util.post(url, data,
-          (status, code, message, data, share) => {
-               let app_cart_cookie_id = '';
-               let user = {};
-               if (status) {
-               user = data.user;
-               //app_cart_cookie_id = data.app_cart_cookie_id;
-               //Storage.setAppCartCookieId(app_cart_cookie_id);
-               Storage.setUser(user);
-               }
+          (data,status) => {
 
-               dispatch({type:types.kUserLogin, status:status, code:code, message:message, share:share, user:user});
-               dispatch(cartView(app_cart_cookie_id, user.access_token));
+               var user = data.data.user;
+               dispatch({type:types.kUserLogin, user:user});
           },
-          (error) => {
-               alert("error")
+          (error,status=500) => {
                Alert.alert(error.message);
                dispatch({'type': types.kActionError});
           });

@@ -44,18 +44,24 @@ let Util = {
         fetch(url, fetchOptions)
             .then((response) => {
 
-                return response.json();
+                return response.text();
 
             })
             .then((responseText) => {
-                console.log("11111")
 
-                console.log(responseText)
-                //let result = JSON.parse(responseText);
-               // successCallback(result.status, result.code, result.message, result.data, result.share);
+                var res = JSON.parse(responseText);
+
+                /*返回正确分支*/
+                if (res.ok){
+                    successCallback(res,responseText.status)
+
+                }else{
+                   /*返回错误分支*/
+                    failCallback(res,responseText.status)
+
+                }
             })
             .catch((err) => {
-            console.log("2222")
                 failCallback(err);
             });
     },

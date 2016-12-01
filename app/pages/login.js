@@ -41,7 +41,6 @@ class Login extends Component {
         InteractionManager.runAfterInteractions(() => {
             const {userReducer} = this.props;
 
-            alert("update")
             console.log(userReducer);
             if (userReducer.isLoggedIn == true) {
                 this.props.navigator.resetTo({component:AppMain,name:"appMain"});

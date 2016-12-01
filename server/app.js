@@ -1,3 +1,21 @@
+
+
+/*
+*
+* 回复的结构统一如下，这里这是我们返回的数据，不考虑整体的res
+*
+* {
+*
+* status:2xx/5xx  返回的状态码
+* message:xxx          如果失败了，这里有字段，成功了，该字段可选
+*  data：xxx           如果成功了，该字段为数据段，失败则可选
+*
+* }
+*
+* */
+
+
+
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');

@@ -2,11 +2,7 @@
 import * as types from '../actions/actionTypes';
 
 const initialState = {
-    status: false,
-    code: 0,
-    message: '',
     user: {},
-    share: {},
     isLoading: false,
     isLoggedIn: false,
     avatar:false,
@@ -21,10 +17,12 @@ let userReducer = (state=initialState, action) => {
 
             state.user.id = action.user.id;
             state.user.mobile = action.user.mobile;
+            state.avatar = true;
+            state.isLoading = false;
+            state.isLoggedIn = true;
+
             return {
                 ...state,
-                isLoading: false,
-                isLoggedIn: true,
             };
 
         case types.kUserLogout:
