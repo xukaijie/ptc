@@ -14,7 +14,10 @@ import IconFA from 'react-native-vector-icons/FontAwesome';
 
 import Home from "./home";
 import Header from "../common/header";
-import Mypage from "./myPage"
+import Mypage from "./myPage";
+import Drawlayout from "./drawLayout"
+
+import ArcleList from './arcleList'
 
 import {
     AppRegistry,
@@ -92,7 +95,7 @@ class Mainpage extends Component {
                     }}
                 >
 
-                    <View><Text>mmmm</Text></View>
+                    <ArcleList {...this.props}></ArcleList>
 
                 </TabBarIOS.Item>
                 <TabBarIOS.Item

@@ -20,5 +20,10 @@ export const kUserLogout                        = 'kUserLogout';
 export const kUserLogoutReceived                = 'kUserLogoutReceived';
 
 
+//新闻列表
+
+export const kUserArcleRecevied                 = 'kUserArcleRecevied';
+
+
 
 
