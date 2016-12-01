@@ -13,26 +13,26 @@ router.post('/login', function(req, res, next) {
 
     var name = req.body.name;
     var password = req.body.password;
-    var ret = {};
 
-    console.log("user login")
-    console.log(userTable.userTable.length)
 
     for (var i = 0;i < userTable.userTable.length;i++){
 
         if (userTable.userTable[i].name == name && userTable.userTable[i].password == password){
 
-            ret.status = status.status_ok;
-            ret.data={};
+            var ret = status.getOKdata();
             ret.data.user={}
             ret.data.user.mobile = userTable.userTable[i].mobile;
             ret.data.user.id = userTable.userTable[i].id;
-            res.send(ret)
+            res.status(ret.status);
+            res.json(ret)
 
         }else{
-            ret.message="login failed"
-            res.status(status.status_login_failed);
-            res.send(ret)
+
+            var ret = status.getFaileddata();
+            ret.message="登录失败";
+            ret.status = (ret.status|status.status_login_failed)
+            res.status(ret.status);
+            res.json(ret)
         }
     }
 
