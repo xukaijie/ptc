@@ -11,7 +11,6 @@ const initialState = {
 
 let userReducer = (state=initialState, action) => {
 
-    console.log(action)
     switch (action.type) {
         case types.kUserLogin:
 

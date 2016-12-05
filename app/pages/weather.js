@@ -12,13 +12,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import IconFA from 'react-native-vector-icons/FontAwesome';
 
-import Home from "./home";
-import Header from "../common/header";
-import Mypage from "./myPage";
-import Drawlayout from "./drawLayout";
-import Weather from './weather'
+import {connect} from 'react-redux'
 
-import ArcleList from './arcleList'
 
 import {
     AppRegistry,
@@ -32,110 +27,38 @@ import {
     TabBarIOS
 } from 'react-native';
 
+
 var width = Dimensions.get("window").width;
 var pixel = 1 / PixelRatio.get();
 
 
-class Mainpage extends Component {
+
+class Weather extends Component {
 
     constructor(props) {
         super(props);
-
-        this.state= {selectedTab:{name:"home",title:"首页"}}
-
     }
 
-    /*    _addnavgator(component){
 
-     return (
-     <Navigator
-     initialRoute={{component:component}}
-     renderScene={(route, navigator) => {
-     alert("goto home")
-     return <route.component navigator={navigator} />
-     }}>
-
-     </Navigator>
-     );
-
-     }*/
 
     render(){
-
-        var thiz=this;
-
+        var thiz = this;
         return (
-
-
-            <TabBarIOS
-                style={{flex:1,alignItems:"flex-end"}}
-                tintColor="white"
-                barTintColor="#5fd3f5">
-                <TabBarIOS.Item
-                    title={this.state.selectedTab.title}
-                    systemIcon="favorites"
-                    selected={this.state.selectedTab.name === 'home'}
-                    onPress={() => {
-                        this.setState({
-                            selectedTab: {name:'home',title:"首页"}
-                        });
-                    }}
-                >
-                    <Home title={this.state.selectedTab.title}{...this.props}></Home>
-
-                </TabBarIOS.Item>
-                <TabBarIOS.Item
-                    title={this.state.selectedTab.title}
-                    systemIcon="contacts"
-                    selected={this.state.selectedTab.name === 'history'}
-
-                    onPress={() => {
-                        this.setState({
-                            selectedTab: {name:'history',title:"历史"}
-                        });
-                    }}
-                >
-
-                    <ArcleList {...this.props}></ArcleList>
-
-                </TabBarIOS.Item>
-
-                <TabBarIOS.Item
-                    title={this.state.selectedTab.title}
-                    systemIcon="favorites"
-                    selected={this.state.selectedTab.name === 'favorites'}
-                    onPress={() => {
-                        this.setState({
-                            selectedTab: {name:'favorites',title:"最爱"}
-                        });
-                    }}>
-
-                    <Weather></Weather>
-                </TabBarIOS.Item>
-
-                <TabBarIOS.Item
-                    title={this.state.selectedTab.title}
-                    systemIcon="more"
-                    selected={this.state.selectedTab.name === 'about'}
-                    onPress={() => {
-                        this.setState({
-                            selectedTab: {name:'about',title:"关于"}
-                        });
-                    }}>
-
-                    <Mypage {...this.props}></Mypage>
-                </TabBarIOS.Item>
-
-            </TabBarIOS>
-
-
+            <View style={{flex:1}}>
+                <View style={styles.forecastView}>
+                   <View style={styles.forecastList}>
+                        <Image style={styles.image} source={require("./../images/sunny.png")}></Image>
+                    </View>
+                </View>
+            </View>
         )
     }
 };
 
 
-
 const styles = StyleSheet.create({
+
+
     container: {
         flex: 1,
         justifyContent: 'center',
@@ -149,7 +72,7 @@ const styles = StyleSheet.create({
     },
     instructions: {
         textAlign: 'center',
-        color: '#333333',
+        color: '#dff5b2',
         marginBottom: 5,
     },
     slide: {
@@ -169,9 +92,8 @@ const styles = StyleSheet.create({
         fontSize: 12
     },
     image:{
-        width: width,
-        height: 80,
-        flex: 1,
+        width: width/3,
+        height: width/3,
         alignSelf: "stretch",
         resizeMode: "cover"
     },
@@ -198,6 +120,8 @@ const styles = StyleSheet.create({
     touchBox:{
         width: width/3-0.33334,
         height:width/3,
+        alignItems:"center",
+        justifyContent:"center",
         backgroundColor:"#fff",
     },
     touchBoxContainer:{
@@ -241,7 +165,29 @@ const styles = StyleSheet.create({
         left: 0,
         backgroundColor:"transparent"
     },
+    forecastView: {
+        marginLeft: 5,
+        marginRight: 5,
+        flexDirection: 'row',
+        borderColor: '#e2e2e2',
+        backgroundColor: '#fff',
+        borderWidth: 1,
+        borderRadius: 3
+    },
+    forecastList: {
+        flex: 1,
+        borderColor: '#E2E2E2',
+        paddingLeft: 12,
+        paddingRight: 12,
+        alignItems:"center",
+        justifyContent:"center",
+    },
 
 });
 
-module.exports = Mainpage
+export default connect((state) => {
+    const { weatherReducer } = state;
+    return {
+        weatherReducer
+    }
+})(Weather);

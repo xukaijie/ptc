@@ -15,6 +15,8 @@ let arcleReducer = (state=initialState, action) => {
 
               state.article.push(action.data[i])
             }
+
+            console.log(state)
             return {
                 ...state,
             };

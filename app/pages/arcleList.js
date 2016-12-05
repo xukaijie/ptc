@@ -2,13 +2,16 @@
 import React, { PropTypes,Component } from 'react';
 
 import ScrollableTabView, { DefaultTabBar } from 'react-native-scrollable-tab-view';
+import TimeAgo from 'react-native-timeago';
+
 
 import {arcleGetList} from '../actions/arcleActions';
 
 import {connect} from 'react-redux';
 
 import { formatStringWithHtml } from '../common/formatUtil';
-//import WebViewPage from '../pages/webViewPage';
+import LoadingView from '../common/loadingView';
+//import WebViewPage from './webViewPage';
 
 
 
@@ -37,13 +40,14 @@ class ArcleList extends Component {
         this.state = {
             dataSource: new ListView.DataSource({
                 rowHasChanged: (row1, row2) => row1 !== row2,
-            })
+            }),
+
         };
 
     }
 
 
-    componentDidMount() {
+   componentDidMount() {
         const { dispatch } = this.props;
 
         InteractionManager.runAfterInteractions(() => {
@@ -54,12 +58,12 @@ class ArcleList extends Component {
     }
 
     onPress(article) {
-        const { navigator } = this.props;
+/*        const { navigator } = this.props;
         navigator.push({
             component: WebViewPage,
             name: 'WebViewPage',
             article
-        });
+        });*/
     }
 
 
@@ -95,20 +99,18 @@ class ArcleList extends Component {
 
     render(){
 
-        alert("render")
-
         var {arcleReducer} = this.props;
 
-        console.log("z3########################################")
-
-        console.log(arcleReducer)
         return (
 
             <View style={{flex:1}}>
 
-
+                {
+                    arcleReducer.article.length == 0?
+                        <LoadingView/>
+                        :
                 <ListView
-
+                    initialListSize={1}
                     dataSource={this.state.dataSource.cloneWithRows(arcleReducer.article)}
                     renderRow={this.renderItem.bind(this)}
                     style={styles.listView}
@@ -132,6 +134,7 @@ class ArcleList extends Component {
 
 
                 </ListView>
+                }
 
 
 

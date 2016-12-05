@@ -7,6 +7,7 @@ import { Alert } from 'react-native';
 
 import Util from '../common/utils';
 import * as urls from '../common/urls';
+import {apikey} from '../common/config'
 
 
 
@@ -18,7 +19,7 @@ export let arcleGetList = () => {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'apikey':'19ffb04654b0f50d003e0a58abf2c50b'
+            'apikey':apikey
         },
         };
 
