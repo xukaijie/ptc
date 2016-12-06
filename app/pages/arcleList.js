@@ -44,6 +44,8 @@ class ArcleList extends Component {
 
         };
 
+        this.getContent = this.getContent.bind(this)
+
     }
 
 
@@ -51,6 +53,7 @@ class ArcleList extends Component {
         const { dispatch } = this.props;
 
         InteractionManager.runAfterInteractions(() => {
+
 
                 dispatch(arcleGetList())
 
@@ -97,47 +100,57 @@ class ArcleList extends Component {
         );
     }
 
-    render(){
+    getContent(){
 
         var {arcleReducer} = this.props;
 
+        if (arcleReducer.isLoading){
+            return <LoadingView/>
+        }
+        else if (arcleReducer.receivederr){
+
+          return(  <View style={{ alignItems: 'center' }}>
+                <Text style={{ fontSize: 16 }}>
+                    目前没有数据，请刷新重试……
+                </Text>
+            </View>)
+        }
+        else{
+           return  (<ListView
+                initialListSize={1}
+                dataSource={this.state.dataSource.cloneWithRows(arcleReducer.article)}
+                renderRow={this.renderItem.bind(this)}
+                style={styles.listView}
+                //onEndReached={() => this.onEndReached(typeId)}
+                //onEndReachedThreshold={10}
+                // onScroll={this.onScroll}
+                renderFooter={this.renderFooter}
+                // renderScrollComponent={props => <RecyclerViewBackedScrollView {...props} />}
+                /* refreshControl={
+                 <RefreshControl
+                 style={styles.refreshControlBase}
+                 refreshing={read.isRefreshing}
+                 onRefresh={() => this.onRefresh(typeId)}
+                 title="Loading..."
+                 colors={['#ffaa66cc', '#ff00ddff', '#ffffbb33', '#ffff4444']}
+                 />
+                 }*/
+
+            >
+
+
+            </ListView>)
+
+        }
+
+    }
+
+    render(){
         return (
 
             <View style={{flex:1}}>
 
-                {
-                    arcleReducer.article.length == 0?
-                        <LoadingView/>
-                        :
-                <ListView
-                    initialListSize={1}
-                    dataSource={this.state.dataSource.cloneWithRows(arcleReducer.article)}
-                    renderRow={this.renderItem.bind(this)}
-                    style={styles.listView}
-                    //onEndReached={() => this.onEndReached(typeId)}
-                    //onEndReachedThreshold={10}
-                   // onScroll={this.onScroll}
-                    renderFooter={this.renderFooter}
-                   // renderScrollComponent={props => <RecyclerViewBackedScrollView {...props} />}
-                   /* refreshControl={
-                        <RefreshControl
-                            style={styles.refreshControlBase}
-                            refreshing={read.isRefreshing}
-                            onRefresh={() => this.onRefresh(typeId)}
-                            title="Loading..."
-                            colors={['#ffaa66cc', '#ff00ddff', '#ffffbb33', '#ffff4444']}
-                        />
-                         }*/
-
-                >
-
-
-
-                </ListView>
-                }
-
-
-
+                {this.getContent()}
 
             </View>
 

@@ -24,6 +24,8 @@ export const kUserLogoutReceived                = 'kUserLogoutReceived';
 
 export const kUserArcleRecevied                 = 'kUserArcleRecevied';
 
+export const kUserArcleRequestErr               = 'kUserArcleRequestErr';
+
 
 
 

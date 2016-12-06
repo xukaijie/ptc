@@ -16,7 +16,7 @@ import Home from "./home";
 import Header from "../common/header";
 import Mypage from "./myPage";
 import Drawlayout from "./drawLayout";
-import Weather from './weather'
+//import Weather from './weather'
 
 import ArcleList from './arcleList'
 
@@ -100,7 +100,7 @@ class Mainpage extends Component {
 
                 </TabBarIOS.Item>
 
-                <TabBarIOS.Item
+                {/*<TabBarIOS.Item
                     title={this.state.selectedTab.title}
                     systemIcon="favorites"
                     selected={this.state.selectedTab.name === 'favorites'}
@@ -111,7 +111,7 @@ class Mainpage extends Component {
                     }}>
 
                     <Weather></Weather>
-                </TabBarIOS.Item>
+                </TabBarIOS.Item>*/}
 
                 <TabBarIOS.Item
                     title={this.state.selectedTab.title}

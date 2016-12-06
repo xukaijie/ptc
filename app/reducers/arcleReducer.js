@@ -2,6 +2,9 @@
 import * as types from '../actions/actionTypes';
 
 const initialState = {
+    isloading:true,
+    receivederr:false,
+    loadmore:0,
     article:[]
 };
 
@@ -16,11 +19,18 @@ let arcleReducer = (state=initialState, action) => {
               state.article.push(action.data[i])
             }
 
-            console.log(state)
             return {
                 ...state,
             };
 
+        case types.kUserArcleRequestErr:
+
+                state.receivederr = true;
+                state.isLoading = false;
+
+                return {
+                    ...state,
+                };
 
         default:
             return state;

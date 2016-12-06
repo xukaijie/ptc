@@ -13,20 +13,24 @@ import {apikey} from '../common/config'
 
 export let arcleGetList = () => {
 
-    var url = urls.kArcleList;
+    let url = urls.kArcleList;
     let fetchOptions = {
-        method: 'GET',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'apikey':apikey
-        },
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'apikey':'19ffb04654b0f50d003e0a58abf2c50b'
+            },
         };
 
-    return ((dispatch)=>{
+
+
+    return (dispatch)=>{
 
         fetch(url, fetchOptions)
             .then((response) => {
+
+                console.log(response)
 
                 return response.text();
 
@@ -37,12 +41,14 @@ export let arcleGetList = () => {
 
                 var res = JSON.parse(responseText);
 
+
                 dispatch({type:types.kUserArcleRecevied,data:res.showapi_res_body.pagebean.contentlist})
 
             })
             .catch((err) => {
-                failCallback(err);
+                console.log(err);
+                dispatch({type:types.kUserArcleRequestErr})
             });
-    })
+    }
 
-}
+};

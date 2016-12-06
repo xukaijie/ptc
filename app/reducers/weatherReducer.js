@@ -5,7 +5,7 @@ const initialState = {
 
 };
 
-let userReducer = (state=initialState, action) => {
+let weatherReducer = (state=initialState, action) => {
 
     switch (action.type) {
 
@@ -14,4 +14,4 @@ let userReducer = (state=initialState, action) => {
     }
 };
 
-export default userReducer;
+export default weatherReducer;
