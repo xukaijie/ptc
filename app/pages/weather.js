@@ -94,8 +94,6 @@ const styles = StyleSheet.create({
     image:{
         width: width/3,
         height: width/3,
-        alignSelf: "stretch",
-        resizeMode: "cover"
     },
     mainView: {
         marginTop: 10
@@ -172,7 +170,9 @@ const styles = StyleSheet.create({
         borderColor: '#e2e2e2',
         backgroundColor: '#fff',
         borderWidth: 1,
-        borderRadius: 3
+        borderRadius: 3,
+        alignItems:"center",
+        justifyContent:"center",
     },
     forecastList: {
         flex: 1,

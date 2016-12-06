@@ -50,7 +50,7 @@ class WebViewPage extends Component {
         this.onActionSelected = this.onActionSelected.bind(this);
         this.goBack = this.goBack.bind(this);
 
-        WeChat.registerApp('wx8d560da3ba038e7e');
+       // WeChat.registerApp('wx89acba1a27e62eda');
     }
 
 /*    componentDidMount() {
@@ -115,7 +115,7 @@ class WebViewPage extends Component {
                       if (isInstalled) {
                         WeChat.shareToSession({
                           title: formatStringWithHtml(route.article.title),
-                          description: '分享自：iReading',
+                          description: '分享自：徐开洁的应用',
                           thumbImage: route.article.contentImg,
                           type: 'news',
                           webpageUrl: route.article.url

@@ -58,12 +58,12 @@ class ArcleList extends Component {
     }
 
     onPress(article) {
-/*        const { navigator } = this.props;
+        const { navigator } = this.props;
         navigator.push({
             component: WebViewPage,
             name: 'WebViewPage',
             article
-        });*/
+        });
     }
 
 
