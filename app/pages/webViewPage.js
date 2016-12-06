@@ -32,6 +32,8 @@ import * as WeChat from 'react-native-wechat';
 import { toastShort } from '../common/toastUtil';
 import LoadingView from '../common/loadingView';
 import { formatStringWithHtml } from '../common/formatUtil';
+import Header from "../common/header"
+
 
 const shareIconWechat = require('../images/share_icon_wechat.png');
 const shareIconMoments = require('../images/share_icon_moments.png');
@@ -181,6 +183,10 @@ class WebViewPage extends Component {
         const { navigator, route } = this.props;
         return (
             <View style={styles.container}>
+
+                <Header
+                        leftIcon='angle-left'
+                        leftIconAction={()=>this.props.navigator.pop()}></Header>
 
                 <Modal
                     animationType="fade"

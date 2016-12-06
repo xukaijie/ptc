@@ -11,7 +11,7 @@ import {connect} from 'react-redux';
 
 import { formatStringWithHtml } from '../common/formatUtil';
 import LoadingView from '../common/loadingView';
-//import WebViewPage from './webViewPage';
+import WebViewPage from './webViewPage';
 
 
 
@@ -65,7 +65,8 @@ class ArcleList extends Component {
         navigator.push({
             component: WebViewPage,
             name: 'WebViewPage',
-            article
+            article,
+            navigator
         });
     }
 
@@ -104,8 +105,9 @@ class ArcleList extends Component {
 
         var {arcleReducer} = this.props;
 
+
         if (arcleReducer.isLoading){
-            return <LoadingView/>
+            return (<LoadingView/>)
         }
         else if (arcleReducer.receivederr){
 

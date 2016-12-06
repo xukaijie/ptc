@@ -19,13 +19,16 @@ export let arcleGetList = () => {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'apikey':'19ffb04654b0f50d003e0a58abf2c50b'
+                'apikey':apikey
             },
         };
 
 
 
     return (dispatch)=>{
+
+        console.log(url);
+        console.log(fetchOptions)
 
         fetch(url, fetchOptions)
             .then((response) => {
